@@ -51,7 +51,6 @@ label {
 }
 
 
-
 input {
   border: none;
   background-color: var(--input-background);
@@ -63,6 +62,7 @@ input {
   font-size: 20px;
   color: var(--input-neutral);
   padding-right: 0.75rem;
+  
 }
 
 .tip-header {
@@ -82,15 +82,14 @@ input {
 .left-column-container {
   display: flex;
   flex-direction: column;
-  flex: 1;
   margin-right: 1rem;
-  
+  width: 50%;
 }
 
 .right-column-container {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  width: 50%;
 }
 
 .tip-btn {
@@ -105,14 +104,21 @@ input {
   border-radius: 0.25rem;
 }
 
-.tip-btn:focus {
+.button-focus {
   background-color: var(--input-selected);
   color: var(--input-neutral);
 }
 
-.btn-custom {
+#btn-custom {
+  all: initial;
   background-color: var(--input-background);
   color: var(--input-neutral);
+  text-align: center;
+  height: 2.25rem;
+  font-family: var(--site-font);
+  font-size: 1.3rem;
+  color: var(--input-neutral);
+  border-radius: 0.25rem;
 }
 
 .people-input-container {
@@ -126,5 +132,19 @@ input {
   background-position: 7px 7px;
 }
 
+.error-message {
+  display: inline-flex;
+  padding-left: 4rem;
+  color: red;
+  margin: 0;
+}
 
+.error-border {
+  border: 2px solid red;
+  outline: none;
+}
 
+.invalid-tip-error {
+  color: red;
+  margin: 0;
+}
