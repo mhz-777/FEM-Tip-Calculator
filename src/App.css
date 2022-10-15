@@ -139,6 +139,13 @@ input {
   margin: 0;
 }
 
+.bill-error-message {
+  display: inline-flex;
+  color: red;
+  margin: 0;
+  padding-left: 5rem;
+}
+
 .error-border {
   border: 2px solid red;
   outline: none;
