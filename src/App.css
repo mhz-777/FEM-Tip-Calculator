@@ -14,23 +14,25 @@
   font-family: var(--site-font);
 }
 
-.centered{
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+.logo-container {
+  background-color: var(--main-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+}
+
+.site-logo {
+    
 }
 
 .user-input-container {
   background-color: white;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-
   padding-top: 1.5rem;
   padding-left: 2rem;
   padding-right: 2rem;
-
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 
 label {
@@ -109,7 +111,7 @@ input {
   color: var(--input-neutral);
 }
 
-#btn-custom {
+.btn-custom {
   all: initial;
   background-color: var(--input-background);
   color: var(--input-neutral);
