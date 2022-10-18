@@ -1,33 +1,47 @@
 import siteLogo from './images/logo.svg';
 import './App.css';
 import { useState } from 'react';
+import Results from './components/Results';
 
 function App() {
 
+  // error state for invalid bill input
   const [invalidBill, setInvalidBill] = useState();
+
+  //error state for invalid people input
   const [invalidPeople, setInvalid] = useState();
+
+  //error state for invalid tip input
   const [invalidTip, isInvalid] = useState();
+
+  //state to apply classes on button click
   const [isActive, setActive] = useState();
 
-  let billValue = 0;
-  let tipValue = 0;
-  let persons = 0;
+  //state to store inputted clean data
+  const [data, setData] = useState({
+    billValue: "",
+    tipValue: "",
+    persons: ""
+  });
+
+  //state to verify all inputs are clean
+  const [isClean, setClean] = useState();
 
   const billErrorCheck = (e) => {
     if(e.target.value === '0' || e.target.value < 0) {
       setInvalidBill(true);
     }else {
       setInvalidBill(false);
-      billValue = Number(e.target.value);
+      setData({...data, billValue: e.target.value});
     }
   }
 
   const peopleErrorCheck = (e) => {
-    if(e.target.value === '0') {
+    if(e.target.value === '0' || e.target.value < 0) {
       setInvalid(true);
     }else {
       setInvalid(false);
-      persons = Number(e.target.value);
+      setData({...data, persons: e.target.value});
     }
   }
 
@@ -36,18 +50,28 @@ function App() {
       isInvalid(true);
     }else {
       isInvalid(false);
-      tipValue = Number(e.target.value);
+      setData({...data, tipValue: e.target.id});
     }
   }
 
   const handleClick = (e) => {
     setActive(e.target.id);
-    tipValue = e.target.id;
+    setData({...data, tipValue: e.target.id});
+    isInvalid(false);
   }
+
+  const handleCustomClick = (e) => {
+    setActive(e.target.value);
+    setData({...data, tipValue: e.target.value});
+  }
+
+  // set clean state to valid when all inputs are error-free
 
   return (
     <div className="App">
-      <img src={siteLogo} alt="splitter logo" className='centered'/>
+      <div className="logo-container">
+        <img src={siteLogo} alt="splitter logo" className='site-logo'/>
+      </div>
       <div className="user-input-container">
           <div className="bill-input-container">
             <label htmlFor="bill">
@@ -64,18 +88,20 @@ function App() {
           <h3 className='tip-header'>Select Tip %</h3>
           <div className="tip-input-container">
             <div className="left-column-container">
-              <button className={`tip-btn ${isActive === "5" ? "button-focus" : ""}`} id='5' onClick={handleClick}>5%</button>
-              <button className={`tip-btn ${isActive === "15" ? "button-focus" : ""}`} id='15' onClick={handleClick}>15%</button>
-              <button className={`tip-btn ${isActive === "50" ? "button-focus" : ""}`} id='50' onClick={handleClick}>50%</button>
+              <button className={`tip-btn ${isActive === "0.05" ? "button-focus" : ""}`} id='0.05' onClick={handleClick}>5%</button>
+              <button className={`tip-btn ${isActive === "0.15" ? "button-focus" : ""}`} id='0.15' onClick={handleClick}>15%</button>
+              <button className={`tip-btn ${isActive === "0.50" ? "button-focus" : ""}`} id='0.50' onClick={handleClick}>50%</button>
             </div>
             <div className="right-column-container">
-              <button className={`tip-btn ${isActive === "10" ? "button-focus" : ""}`} id='10' onClick={handleClick}>10%</button>
-              <button className={`tip-btn ${isActive === "25" ? "button-focus" : ""}`} id='25' onClick={handleClick}>25%</button>
+              <button className={`tip-btn ${isActive === "0.10" ? "button-focus" : ""}`} id='0.10' onClick={handleClick}>10%</button>
+              <button className={`tip-btn ${isActive === "0.25" ? "button-focus" : ""}`} id='0.25' onClick={handleClick}>25%</button>
               <input 
                 type="text"
                 placeholder='Custom'
-                id='btn-custom'
+                className={`btn-custom ${isActive === "custom" ? "button-focus" : ""}`}
+                id='custom'
                 onChange={tipErrorCheck}
+                onClick={handleCustomClick}
                />
                {invalidTip === true && <p className='invalid-tip-error'>Zero or higher only.</p>}
             </div>
@@ -94,6 +120,12 @@ function App() {
               onChange={peopleErrorCheck}
              />
           </div>
+          <Results 
+            amount={data.billValue}
+            tip={data.tipValue}
+            people={data.persons}
+            
+          />
       </div>
     </div>
   );
