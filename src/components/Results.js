@@ -3,16 +3,32 @@ import './Results.css'
 
 const Results = (props) => {
 
-    // state to calculate only when inputs are valid
-    const [ready, setReady] = useState();
+    // store results
+    let tip = 0;
+    let bill = 0;
 
+    
     const calculateTip = () => {
-        return((props.amount * props.tip) / props.people).toString();
+        return(Number(props.amount * props.tip) / props.people);
     }
 
     const calculateFinal = () => {
-        return((props.amount / props.people) + ((props.amount * props.tip) / props.people)).toString();
+        return(Number(props.amount / props.people) + ((props.amount * props.tip) / props.people));
     }
+
+    if(props.valid === true) {
+        tip = calculateTip();
+        bill = calculateFinal();
+    }
+
+    const formatResult = (num) => {
+        return Math.round((num + Number.EPSILON) * 100) / 100;
+    }
+
+    const reset = () => {
+        window.location.reload();
+    }
+
 
     return (
         <div className="dynamic-container">
@@ -24,12 +40,12 @@ const Results = (props) => {
                     <p className="subheading">/ person</p>
                 </div>
                 <div className="results-data-container">
-                    <h1 className="data-heading">{'$0.00'}</h1>
-                    <h1 className="data-heading">{'$0.00'}</h1>
+                    <h1 className="data-heading">{props.valid ? formatResult(tip) : "$0.00"}</h1>
+                    <h1 className="data-heading">{props.valid ? formatResult(bill) : "$0.00"}</h1>
                     
                 </div>
             </div>
-            <button className="reset-button">RESET</button>
+            <button className="reset-button" onClick={reset}>RESET</button>
         </div>
     );
 }
