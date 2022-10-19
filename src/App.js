@@ -24,8 +24,8 @@ function App() {
     persons: ""
   });
 
-  //state to verify all inputs are clean
-  const [isClean, setClean] = useState();
+  // bool to verify clean state
+  let isClean = false;
 
   const billErrorCheck = (e) => {
     if(e.target.value === '0' || e.target.value < 0) {
@@ -50,7 +50,7 @@ function App() {
       isInvalid(true);
     }else {
       isInvalid(false);
-      setData({...data, tipValue: e.target.id});
+      setData({...data, tipValue: (e.target.value / 100)});
     }
   }
 
@@ -62,10 +62,14 @@ function App() {
 
   const handleCustomClick = (e) => {
     setActive(e.target.value);
-    setData({...data, tipValue: e.target.value});
   }
 
-  // set clean state to valid when all inputs are error-free
+  // set clean to valid when all inputs are error-free
+  if(invalidBill === false && invalidTip === false && invalidPeople === false) {
+    isClean = true;
+  }else {
+    isClean = false;
+  }
 
   return (
     <div className="App">
@@ -124,7 +128,7 @@ function App() {
             amount={data.billValue}
             tip={data.tipValue}
             people={data.persons}
-            
+            valid ={isClean}
           />
       </div>
     </div>
