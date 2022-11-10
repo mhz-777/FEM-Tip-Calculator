@@ -10,7 +10,6 @@
 }
 
 .App {
-  background-color: var(--main-background);
   font-family: var(--site-font);
 }
 
@@ -22,9 +21,6 @@
   height: 20vh;
 }
 
-.site-logo {
-    
-}
 
 .user-input-container {
   background-color: white;
@@ -33,6 +29,8 @@
   padding-right: 2rem;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
+  position: relative;
+  top: -10px;
 }
 
 label {
@@ -43,13 +41,22 @@ label {
 .bill-input-container {
   display: flex;
   flex-direction: column;
-
 }
 
 #billamount {
   background: url(./images/icon-dollar.svg) no-repeat left;
   background-position: 7px 7px;
   background-color: var(--input-background);
+}
+
+#bill-input-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+#people-input-box {
+  display: flex;
+  justify-content: space-between;
 }
 
 
@@ -64,7 +71,14 @@ input {
   font-size: 20px;
   color: var(--input-neutral);
   padding-right: 0.75rem;
-  
+}
+
+input:focus {
+  outline: none;
+}
+
+.custom-focus {
+  border: solid 2px hsl(172, 67%, 45%);
 }
 
 .tip-header {
@@ -75,10 +89,14 @@ input {
 }
 
 
-.tip-input-container {
+.tip-input-container-mobile {
   display: flex;
   justify-content: center;
   
+}
+
+.tip-input-container-desktop {
+  display: none;
 }
 
 .left-column-container {
@@ -157,3 +175,114 @@ input {
   color: red;
   margin: 0;
 }
+
+@media screen and (min-width: 760px) {
+
+  .App {
+    background-color: var(--main-background);
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .logo-container {
+    padding-top: 3rem;
+  }
+
+  .main-container {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    border-radius: 1rem;
+  }
+
+  .user-input-container {
+    position: initial;
+    margin-bottom: 1.5rem;
+    width: 50%;
+    height: 100%;
+  }
+
+  .tip-input-container-mobile {
+    display: none;
+  }
+
+  .tip-input-container-desktop {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .top-row-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+
+  .bottom-row-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+
+  .bottom-row-container > input {
+    min-width: 33.3%;
+  }
+
+  .tip-btn:hover {
+    background-color: var(--input-selected);
+    color: var(--input-neutral);
+  }
+
+  .bill-error-message {
+    padding-left: 1rem;
+  }
+  
+}
+
+@media screen and (min-width: 1000px){
+  .main-container {
+    
+    max-width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+
+  .error-message {
+    padding-left: 1.25rem;
+  }
+
+  .bill-error-message {
+    padding-left: 4rem;
+  }
+
+  
+}
+
+@media screen and (min-width: 1400px) {
+  .main-container {
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width:1920px) {
+  .main-container {
+    max-width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+@media screen and (min-width: 2000px) {
+  .main-container {
+    max-width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+}
+

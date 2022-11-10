@@ -11,15 +11,13 @@
 
 .dynamic-container {
   background-color: var(--input-neutral);
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin: 1rem 2rem 1rem 2rem;
   border-radius: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
-  
 
 }
 
@@ -67,3 +65,30 @@
   margin-bottom: 1rem;
 }
 
+@media screen and (min-width: 760px) {
+
+  .dynamic-container {
+    width: 50%;
+    margin: 1rem 1rem 1rem 1rem;
+    border-radius: 1.25rem;
+  }
+
+  .reset-button {
+    margin-top: 4.25rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+  }
+
+  .reset-button:hover {
+    background-color: hsl(172, 95%, 66%);
+  }
+
+  .subheading {
+    margin-bottom: 2.5rem;
+  }
+  
+  .data-heading {
+    margin-bottom: 1.5rem;
+  }
+  
+}
