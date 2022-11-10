@@ -40,8 +40,8 @@ const Results = (props) => {
                     <p className="subheading">/ person</p>
                 </div>
                 <div className="results-data-container">
-                    <h1 className="data-heading">{props.valid ? formatResult(tip) : "$0.00"}</h1>
-                    <h1 className="data-heading">{props.valid ? formatResult(bill) : "$0.00"}</h1>
+                    <h1 className="data-heading">{props.valid ? "$"+ formatResult(tip) : "$0.00"}</h1>
+                    <h1 className="data-heading">{props.valid ? "$"+ formatResult(bill) : "$0.00"}</h1>
                 </div>
             </div>
             <button className="reset-button" onClick={reset}>RESET</button>

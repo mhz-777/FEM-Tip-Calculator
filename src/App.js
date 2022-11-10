@@ -44,21 +44,21 @@ function App() {
   const peopleErrorCheck = (e) => {
     if(e.target.value === '0' || e.target.value < 0 || isNaN(e.target.value)) {
       setInvalid(true);
-      e.target.classList.remove('custom-focus');
-      e.target.classList.add('error-border');
+      
     }else {
       setInvalid(false);
       setData({...data, persons: e.target.value});
-      e.target.classList.remove('error-border');
-      e.target.classList.add('custom-focus');
+    
     }
   }
 
   const tipErrorCheck = (e) => {
     if(isNaN(e.target.value) || e.target.value < 0 || e.target.value === '-0') {
       isInvalid(true);
+      e.target.classList.add('error-border');
     }else {
       isInvalid(false);
+      e.target.classList.remove('error-border');
       setData({...data, tipValue: (e.target.value / 100)});
     }
   }

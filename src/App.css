@@ -71,6 +71,7 @@ input {
   font-size: 20px;
   color: var(--input-neutral);
   padding-right: 0.75rem;
+  cursor: pointer;
 }
 
 input:focus {
@@ -139,6 +140,7 @@ input:focus {
   font-size: 1.3rem;
   color: var(--input-neutral);
   border-radius: 0.25rem;
+  cursor: pointer;
 }
 
 .people-input-container {
@@ -168,7 +170,6 @@ input:focus {
 
 .error-border {
   border: 2px solid red;
-  outline: none;
 }
 
 .invalid-tip-error {
