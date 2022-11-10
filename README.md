@@ -6,7 +6,7 @@
 
 # Result
 
-* Link to my demo here:
+* Link to my demo here: https://super-eclair-890e49.netlify.app/
 
 # Stack
 
@@ -14,4 +14,4 @@
 
 # Thoughts
 
-* Yes
+* Went on vacation and thought I would forget everything when I got back. Lucky me I didn't yahoooooo. Anyways check out the project. It was pretty fun 👍.
